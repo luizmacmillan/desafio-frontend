@@ -1,8 +1,8 @@
 import {
   REQUEST_MENUS,
-  REQUEST_MESSAGES,
+  REQUEST_ACCOUNT_DATA,
   GET_MENUS_DATA,
-  GET_MESSAGES_DATA,
+  GET_ACCOUNT_DATA,
   REQUEST_FAILED,
 } from '../Actions/AccountsActions';
 
@@ -23,11 +23,11 @@ export default function AccountsReducer(state = INITIAL_STATE, {
   switch (type) {
     case REQUEST_MENUS:
       return { ...state, isFetchingMenus: true };
-    case REQUEST_MESSAGES:
+    case REQUEST_ACCOUNT_DATA:
       return { ...state, isFetchingMessages: true };
     case GET_MENUS_DATA:
       return { ...state, menus, isFetchingMenus: false };
-    case GET_MESSAGES_DATA:
+    case GET_ACCOUNT_DATA:
       return { ...state, accountData, isFetchingMessages: false };
     case REQUEST_FAILED:
       return { ...state, error };

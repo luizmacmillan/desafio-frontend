@@ -1,10 +1,10 @@
 export const REQUEST_MENUS = 'REQUEST_MENUS';
-export const REQUEST_MESSAGES = 'REQUEST_MESSAGES';
+export const REQUEST_ACCOUNT_DATA = 'REQUEST_ACCOUNT_DATA';
 export const REQUEST_FAILED = 'REQUEST_FAILED';
 export const GET_MENUS_DATA = 'GET_MENUS_DATA';
-export const GET_MESSAGES_DATA = 'GET_MESSAGES_DATA';
+export const GET_ACCOUNT_DATA = 'GET_ACCOUNT_DATA';
 
-export const getMenusData = ({ menus }) => ({
+export const getMenusData = (menus) => ({
   type: GET_MENUS_DATA,
   menus,
 });
@@ -13,13 +13,13 @@ export const requestMenus = () => ({
   type: REQUEST_MENUS,
 });
 
-export const getMessagesData = ({ menus }) => ({
-  type: GET_MESSAGES_DATA,
-  menus,
+export const getMessagesData = (accountData) => ({
+  type: GET_ACCOUNT_DATA,
+  accountData,
 });
 
 export const requestMessages = () => ({
-  type: REQUEST_MESSAGES,
+  type: REQUEST_ACCOUNT_DATA,
 });
 
 export const requestFailed = (error) => ({

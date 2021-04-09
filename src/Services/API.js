@@ -6,7 +6,7 @@ import {
   getMessagesData,
 } from '../Redux/Actions/AccountsActions';
 
-const getAccountsSubMenus = async () => {
+const getAccountsSubMenus = () => {
   const endpoint = 'http://my-json-server.typicode.com/EnkiGroup/DesafioReactEncontact/menus';
 
   return async (dispatch) => {
@@ -22,7 +22,7 @@ const getAccountsSubMenus = async () => {
   };
 };
 
-const getAccountData = async (id) => {
+const getAccountData = (id) => {
   const endpoint = `http://my-json-server.typicode.com/EnkiGroup/DesafioReactEncontact/items${id}`;
 
   return async (dispatch) => {

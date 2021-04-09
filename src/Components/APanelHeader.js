@@ -2,19 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import Accounts from './Accounts';
-import APanelHeader from './APanelHeader';
-
-export const APanel = (props) => {
+export const APanelHeader = (props) => {
   return (
     <div>
-      <APanelHeader />
-      <Accounts />
+      
     </div>
   );
 };
 
-APanel.propTypes = {
+APanelHeader.propTypes = {
   props: PropTypes
 };
 
@@ -26,4 +22,4 @@ const mapDispatchToProps = {
   
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(APanel);
+export default connect(mapStateToProps, mapDispatchToProps)(APanelHeader);

@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux';
 
 import LoginReducer from './LoginReducer';
-// import MessagesReducer from './MessagesReducer';
+import AccountsReducer from './AccountsReducer';
 
 const rootReducer = combineReducers({
   LoginReducer,
-  // MessagesReducer,
+  AccountsReducer,
 });
 
 export default rootReducer;

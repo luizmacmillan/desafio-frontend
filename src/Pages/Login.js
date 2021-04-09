@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import Input from '../Components/Input';
 import { saveLoginAction } from '../Redux/Actions/LoginActions';
 
@@ -10,6 +11,7 @@ const Login = ({ dispatchLogin }) => {
     const loginData = { email: loginEmail, password: loginPassword };
 
     dispatchLogin(loginData);
+
   };
 
   return (
@@ -27,9 +29,11 @@ const Login = ({ dispatchLogin }) => {
         id="login-password"
         setStateValue={ setLoginPassword }
       />
-      <button type="button" onClick={ () => handleSubmit(dispatchLogin) }>
-        Login
-      </button>
+      <Link to="/main-page">
+        <button type="button" onClick={ () => handleSubmit(dispatchLogin) }>
+          Login
+        </button>
+      </Link>
     </div>
   );
 };

@@ -14,6 +14,7 @@ const APanel = ({ menus, isFetching }) => {
         ? <h2>Loading...</h2>
         : menus.map(({ id, name, subMenus }) => (
           <AccountCard
+            key={ id }
             id={ id }
             name={ name }
             subMenus={ subMenus }
@@ -25,7 +26,8 @@ const APanel = ({ menus, isFetching }) => {
 };
 
 APanel.propTypes = {
-  props: PropTypes
+  menus: PropTypes.instanceOf(Array).isRequired,
+  isFetching: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = ({ AccountsReducer: { menus, isFetching } }) => ({

@@ -1,14 +1,18 @@
-import { SAVE_LOGIN } from '../Actions/LoginActions';
+import { SAVE_LOGIN, AUTHENTICATION } from '../Actions/LoginActions';
 
 const INITIAL_STATE = {
-  email: '',
+  user: '',
   password: '',
+  userName: '',
+  authentication: false,
 };
 
 export default function LoginReducer(state = INITIAL_STATE, action) {
   switch (action.type) {
+  case AUTHENTICATION:
+    return { ...state, authentication: action.authentication };
   case SAVE_LOGIN:
-    return { ...state, email: action.email, password: action.password };
+    return { ...state, user: action.user, password: action.password, userName: action.userName };
   default:
     return state;
   }

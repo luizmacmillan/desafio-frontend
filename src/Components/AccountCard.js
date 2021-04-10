@@ -31,7 +31,9 @@ const AccountCard = ({ id, name, subMenus }) => {
 };
 
 AccountCard.propTypes = {
-  props: PropTypes
+  id: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  subMenus: PropTypes.instanceOf(Array).isRequired,
 };
 
 const mapStateToProps = (state) => ({

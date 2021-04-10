@@ -4,9 +4,9 @@ import { connect } from 'react-redux';
 
 import API from '../Services/API';
 
-export const MainPage = ({ dispatchAccountsSubMenus }) => {
+const MainPage = ({ dispatchAccountsMenus }) => {
   useEffect(() => {
-    dispatchAccountsSubMenus()
+    dispatchAccountsMenus();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -18,15 +18,16 @@ export const MainPage = ({ dispatchAccountsSubMenus }) => {
 };
 
 MainPage.propTypes = {
-  props: PropTypes
+  menus: PropTypes.any.isRequired
 };
 
-const mapStateToProps = (state) => ({
-  
+const mapStateToProps = ({ AccountsReducer: { menus } }) => ({
+  menus,
 });
 
+
 const mapDispatchToProps = (dispatch) => ({
-  dispatchAccountsSubMenus: () => dispatch(API.getAccountsSubMenus()),
+  dispatchAccountsMenus: () => dispatch(API.getAccountsMenus()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainPage);

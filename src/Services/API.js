@@ -2,11 +2,38 @@ import {
   requestFailed,
   requestMenus,
   getMenusData,
-  requestMessages,
-  getMessagesData,
 } from '../Redux/Actions/AccountsActions';
 
-const getAccountsSubMenus = () => {
+const getAccountData = async (id) => {
+  const endpoint = `http://my-json-server.typicode.com/EnkiGroup/DesafioReactEncontact/items/${id}`;
+
+  try {
+    const response = await fetch(endpoint);
+    const data = await response.json();
+
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+const updateToCompleteData = async (data) => {
+  const completeData = [];
+  let updatedMenu = [];
+
+  for (const menu of data) {
+    for (const subMenu of menu.subMenus) {
+      const response = await getAccountData(subMenu.id);
+      subMenu.subMenuItems = response.subMenuItems;
+      updatedMenu.push(subMenu);
+    }
+    completeData.push(updatedMenu);
+    updatedMenu = [];
+  }
+
+  return completeData;
+};
+
+const getAccountsMenus = () => {
   const endpoint = 'http://my-json-server.typicode.com/EnkiGroup/DesafioReactEncontact/menus';
 
   return async (dispatch) => {
@@ -14,24 +41,9 @@ const getAccountsSubMenus = () => {
     try {
       const response = await fetch(endpoint);
       const data = await response.json();
+      const completeData = await updateToCompleteData(data);
 
-      dispatch(getMenusData(data));
-    } catch (error) {
-      dispatch(requestFailed(error));
-    }
-  };
-};
-
-const getAccountData = (id) => {
-  const endpoint = `http://my-json-server.typicode.com/EnkiGroup/DesafioReactEncontact/items${id}`;
-
-  return async (dispatch) => {
-    dispatch(requestMessages());
-    try {
-      const response = await fetch(endpoint);
-      const data = await response.json();
-
-      dispatch(getMessagesData(data));
+      dispatch(getMenusData(completeData));
     } catch (error) {
       dispatch(requestFailed(error));
     }
@@ -39,7 +51,7 @@ const getAccountData = (id) => {
 };
 
 const API = {
-  getAccountsSubMenus,
+  getAccountsMenus,
   getAccountData,
 };
 

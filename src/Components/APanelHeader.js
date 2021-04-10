@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-export const APanelHeader = (props) => {
+const APanelHeader = (props) => {
   return (
     <div>
       

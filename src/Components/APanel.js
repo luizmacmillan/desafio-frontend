@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import Accounts from './Accounts';
 import APanelHeader from './APanelHeader';
 
-export const APanel = (props) => {
+const APanel = (props) => {
   return (
     <div>
       <APanelHeader />

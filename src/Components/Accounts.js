@@ -4,20 +4,24 @@ import { connect } from 'react-redux';
 
 import AccountCard from './AccountCard';
 
-export const Accounts = (props) => {
+const Accounts = ({ menus, isFetching }) => {
   return (
     <div>
-      <AccountCard />
+      { isFetching ? <h3>Loading</h3> : menus.map((menu) => (
+        <AccountCard />
+      )) }
     </div>
   );
 };
 
 Accounts.propTypes = {
-  props: PropTypes
+  menus: PropTypes.arrayOf.isRequired,
+  isFetching: PropTypes.bool.isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  
+const mapStateToProps = ({ AccountsReducer: { menus, isFetching } }) => ({
+  menus,
+  isFetching,
 });
 
 const mapDispatchToProps = {

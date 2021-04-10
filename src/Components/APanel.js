@@ -35,8 +35,4 @@ const mapStateToProps = ({ AccountsReducer: { menus, isFetching } }) => ({
   isFetching,
 });
 
-const mapDispatchToProps = {
-  
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(APanel);
+export default connect(mapStateToProps)(APanel);

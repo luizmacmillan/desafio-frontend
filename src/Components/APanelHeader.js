@@ -46,8 +46,4 @@ const mapStateToProps = ({ LoginReducer: { userName } }) => ({
   userName,
 });
 
-const mapDispatchToProps = {
-  
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(APanelHeader);
+export default connect(mapStateToProps)(APanelHeader);

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 
+import SubMenuCard from './SubMenuCard';
 import MinimizedIcon from '../Assets/MinimizedIcon.svg';
 import ExpandedIcon from '../Assets/ExpandedIcon.svg';
 
@@ -21,10 +21,13 @@ const AccountCard = ({ id, name, subMenus }) => {
       <p>{ name }</p>
       <p>{ subMenus.reduce((acc, curr) => acc + curr.subMenuItems.length, 0) }</p>
       { expanded && subMenus.map((subMenu) => (
-        <div key={ subMenu.id }>
-          <p>{ subMenu.name }</p>
-          <p>{ subMenu.subMenuItems.length }</p>
-        </div>
+        <SubMenuCard
+          accountId={ id }
+          key={ subMenu.id }
+          subMenuId={ subMenu.id }
+          name={ subMenu.name }
+          subMenuItems={ subMenu.subMenuItems }
+        />
       )) }
     </div>
   );
@@ -36,12 +39,4 @@ AccountCard.propTypes = {
   subMenus: PropTypes.instanceOf(Array).isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  
-});
-
-const mapDispatchToProps = {
-  
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(AccountCard);
+export default AccountCard;

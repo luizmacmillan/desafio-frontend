@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import APanel from '../Components/APanel';
+import BPanel from '../Components/BPanel';
 import API from '../Services/API';
 
 const MainPage = ({ dispatchAccountsMenus, authentication }) => {
@@ -22,7 +23,10 @@ const MainPage = ({ dispatchAccountsMenus, authentication }) => {
           </Link>
         </div>
       ) : (
-        <APanel />
+        <div>
+          <APanel />
+          <BPanel />
+        </div>
       ) }
     </div>
   )

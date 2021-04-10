@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 const MessageCard = ({ item: {name, owner, subject, users }, name: subMenuName }) => {
   const currentHour = () => {
-    return new Date().getUTCMinutes();
+    return `${new Date().getUTCHours()}:${new Date().getUTCMinutes()}`;
   }
 
   return (

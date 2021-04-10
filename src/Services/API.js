@@ -26,7 +26,8 @@ const updateToCompleteData = async (data) => {
       subMenu.subMenuItems = response.subMenuItems;
       updatedMenu.push(subMenu);
     }
-    completeData.push(updatedMenu);
+    menu.subMenus = updatedMenu;
+    completeData.push(menu);
     updatedMenu = [];
   }
 

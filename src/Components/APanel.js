@@ -2,14 +2,24 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import Accounts from './Accounts';
+import AccountCard from './AccountCard';
 import APanelHeader from './APanelHeader';
 
-const APanel = (props) => {
+const APanel = ({ menus, isFetching }) => {
   return (
     <div>
       <APanelHeader />
-      <Accounts />
+      {
+        isFetching
+        ? <h2>Loading...</h2>
+        : menus.map(({ id, name, subMenus }) => (
+          <AccountCard
+            id={ id }
+            name={ name }
+            subMenus={ subMenus }
+          />
+        ))
+      }
     </div>
   );
 };
@@ -18,8 +28,9 @@ APanel.propTypes = {
   props: PropTypes
 };
 
-const mapStateToProps = (state) => ({
-  
+const mapStateToProps = ({ AccountsReducer: { menus, isFetching } }) => ({
+  menus,
+  isFetching,
 });
 
 const mapDispatchToProps = {

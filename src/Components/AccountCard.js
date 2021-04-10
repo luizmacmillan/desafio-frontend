@@ -1,16 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import MinimizedIcon from './MinimizedIcon.svg';
+import MinimizedIcon from '../Assets/MinimizedIcon.svg';
+import ExpandedIcon from '../Assets/ExpandedIcon.svg';
 
-const AccountCard = ({ menuName, subMenus }) => {
+const AccountCard = ({ id, name, subMenus }) => {
+  const [expanded, setExpanded] = useState(false);
+
   return (
-    <div>
-      <img src={ MinimizedIcon } alt="expand-icon" width="20px" />
-      <p>{ menuName }</p>
-      <p>Quantidade de emails total</p>
-      <p>Quantidade de emails no subMenu</p>
+    <div key={ id }>
+      <input
+        type="image"
+        src={ expanded ? ExpandedIcon : MinimizedIcon }
+        alt="expand-icon"
+        onClick={ () => setExpanded(!expanded) }
+        width="20px"
+        height="20px"
+      />
+      <p>{ name }</p>
+      <p>{ subMenus.reduce((acc, curr) => acc + curr.subMenuItems.length, 0) }</p>
+      { expanded && subMenus.map((subMenu) => (
+        <div key={ subMenu.id }>
+          <p>{ subMenu.name }</p>
+          <p>{ subMenu.subMenuItems.length }</p>
+        </div>
+      )) }
     </div>
   );
 };
